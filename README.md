@@ -1,20 +1,3 @@
-Postavljeno je: SIDECAR_STATUS_URL=http://node-web-app:8888/
-
-Poenta je da ukolikok 2 dcoekr container-a run-aju u istom docker networku, onda se moze pristupiti jednom container-u iz drugog, po njegovom container name-u ! 
-
-docker build -t ecatovic/node-web-app .
-docker tag ecatovic/node-web-app 192.168.3.253:5000/node-web-app
-docker push 192.168.3.253:5000/node-web-app
-docker pull 192.168.3.253:5000/node-web-app
-
-docker run --name node-web-app -p 8888:8888 -d 192.168.3.253:5000/node-web-app
-docker run --name node-web-app --net='mybridge' -p 9999:9999 -d 192.168.3.253:5000/node-web-app
-
-docker run --name node-web-app-2 --net='mybridge' -v /scripts -p 9999:8888 -d 192.168.3.253:5000/node-web-app
-
-
-docker start node-web-app
-http://192.168.3.252:8888/
 
 
 bluemix-hello-node
